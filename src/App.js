@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Choose from "./components/Choose";
-import Home from "./components/Home";
+
 import "./scss/index.scss";
-import Services from "./components/Services";
+
 import Categories from "./components/Categories";
 import Recommend from "./components/Recommend";
-import Products from "./components/Products";
+
 import Promo from "./components/Promo";
 import ScrollTop from "./components/ScrollTop";
 import Footer from "./components/Footer";
-import scrollreveal from "scrollreveal";
+
 import {
   Routes,
   Route,
@@ -18,9 +18,6 @@ import {
 } from "react-router-dom";
 import Productpage from "./pages/product_page";
 import Sign from "./components/sign";
-import Categorypage from "./pages/category_page";
-import CategoryCarousel from "./components/categorycarousel";
-import ProductDetails from "./components/productdetails";
 import Contact from "./pages/contact_page/contact";
 import SimpleForm from "./components/bot/bot";
 import MultiItemCarousel from "./components/multicorousel/multi";
