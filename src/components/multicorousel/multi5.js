@@ -1,3 +1,6 @@
+import { db } from '../../firebase';
+import { query, collection, onSnapshot } from 'firebase/firestore';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -44,6 +47,7 @@ import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import CategoryBar from '../categorybar';
+import Card from './card';
 let slidesToShow = 5;
 const CategoryBarData = [
     {
@@ -70,18 +74,18 @@ const CategoryBarData = [
         type: "electronics",
         classnum: "bas3"
     },
-    
+
 ];
 
 
 export const data = [image1, image2, image3, image4, image5, image6];
 export const multiData = [
-   nflex1,
-   nflex2,
-   nflex3,
-   nflex4,
-   nflex5,
-   nflex6,
+    nflex1,
+    nflex2,
+    nflex3,
+    nflex4,
+    nflex5,
+    nflex6,
 ];
 export const multiData1 = [
     sflex1,
@@ -90,23 +94,23 @@ export const multiData1 = [
     sflex4,
     sflex5,
     sflex6,
- ];
- export const multiData2 = [
+];
+export const multiData2 = [
     bflex1,
     bflex2,
     bflex3,
     bflex4,
     bflex5,
     bflex6,
- ];
- export const multiData3 = [
+];
+export const multiData3 = [
     vflex1,
     vflex2,
     vflex3,
     vflex4,
     vflex5,
     vlex6,
- ];
+];
 
 const PreviousBtn = (props) => {
     console.log(props);
@@ -169,11 +173,22 @@ const carouselProperties = {
 };
 
 const MultiItemCarousel5 = () => {
+    const [cards, setCards] = useState([]);
     const [width, setWidth] = useState(window.innerWidth);
     const updateWidth = () => {
         setWidth(window.innerWidth);
     };
-
+    useEffect(() => {
+        const q = query(collection(db, 'flex'))
+        const unSubscribe = onSnapshot(q, (querySnapshot) => {
+            let todoArr = []
+            querySnapshot.forEach((doc) => {
+                todoArr.push({ ...doc.data(), id: doc.id })
+            });
+            setCards(todoArr);
+        })
+        return () => unSubscribe();
+    }, [])
     useEffect(() => {
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
@@ -209,33 +224,41 @@ const MultiItemCarousel5 = () => {
             <div id='bas0' style={{ color: "var(--light-blue)" }}>
                 <h1 >Normal Banner-Flex</h1>
                 <Slider {...carouselProperties}>
-                    {multiData.map((item) => (
-                        <Card item={item} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Normal Banner-Flex").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
             <div id='bas1' style={{ color: "var(--light-blue)" }}>
                 <h1 >Star-Flex</h1>
                 <Slider {...carouselProperties}>
-                    {multiData1.map((item) => (
-                        <Card item={item} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Star-Flex").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
             <div id='bas2' style={{ color: "var(--light-blue)" }}>
                 <h1 >Backligh-Flex</h1>
                 <Slider {...carouselProperties}>
-                    {multiData2.map((item) => (
-                        <Card item={item} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Backligh-Flex").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
             <div id='bas3' style={{ color: "var(--light-blue)" }}>
                 <h1 >Vinyl-Flex</h1>
                 <Slider {...carouselProperties}>
-                    {multiData3.map((item) => (
-                        <Card item={item} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Vinyl-Flex").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
 
@@ -244,29 +267,6 @@ const MultiItemCarousel5 = () => {
     );
 };
 
-const Card = ({ item }) => {
-    return (
-        <div style={{ textAlign: 'center' }}>
-            <img
-                className='multi__image'
-                src={item}
-                alt=''
-                style={{
-                    width: '100%',
-                    height: '170px',
-                    objectFit: 'contain',
-                    marginBottom: '10px',
-                }}
-            />
-            <p style={{ fontSize: '14px', padding: '5px 0' }}>TOP TRNDING TVs</p>
-            <p style={{ fontSize: '16px', padding: '5px 0', color: 'green' }}>
-                From ₹ 7,000
-            </p>
-            <p style={{ fontSize: '14px', padding: '5px 0', color: 'gray' }}>
-                Up To ₹ 5,000 Off on HDFC
-            </p>
-        </div>
-    );
-};
+
 
 export default MultiItemCarousel5;

@@ -1,3 +1,6 @@
+import { db } from '../../firebase';
+import { query, collection, onSnapshot } from 'firebase/firestore';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -33,6 +36,7 @@ import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import CategoryBar from '../categorybar';
+import Card from './card';
 let slidesToShow = 5;
 const CategoryBarData = [
     {
@@ -53,21 +57,21 @@ const CategoryBarData = [
         type: "paper",
         classnum: "bas2"
     },
-   
+
 ];
 
 
 export const data = [image1, image2, image3, image4, image5, image6];
 export const multiData = [
-   multi4car1,
-   multi4car2,
-   multi4car3,
-   multi4car4,
-   multi4car5,
-   multi4car18,
-  
+    multi4car1,
+    multi4car2,
+    multi4car3,
+    multi4car4,
+    multi4car5,
+    multi4car18,
 
-    
+
+
 ];
 export const multiData1 = [
     multi4car6,
@@ -77,7 +81,7 @@ export const multiData1 = [
     multi4car16,
     multi4car17,
 
-    
+
 ];
 export const multiData2 = [
     multi4car9,
@@ -87,7 +91,7 @@ export const multiData2 = [
     multi4car13,
     multi4car14,
 
-    
+
 ];
 
 const PreviousBtn = (props) => {
@@ -151,11 +155,22 @@ const carouselProperties = {
 };
 
 const MultiItemCarousel4 = () => {
+    const [cards, setCards] = useState([]);
     const [width, setWidth] = useState(window.innerWidth);
     const updateWidth = () => {
         setWidth(window.innerWidth);
     };
-
+    useEffect(() => {
+        const q = query(collection(db, 'bond sheet'))
+        const unSubscribe = onSnapshot(q, (querySnapshot) => {
+            let todoArr = []
+            querySnapshot.forEach((doc) => {
+                todoArr.push({ ...doc.data(), id: doc.id })
+            });
+            setCards(todoArr);
+        })
+        return () => unSubscribe();
+    }, [])
     useEffect(() => {
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
@@ -191,57 +206,40 @@ const MultiItemCarousel4 = () => {
             <div id='bas0' style={{ color: "var(--light-blue)" }}>
                 <h1 >Bond Sheets</h1>
                 <Slider {...carouselProperties}>
-                    {multiData.map((item) => (
-                        <Card item={item} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Bond Sheets").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div><br /><br />
             <div id='bas1' style={{ color: "var(--light-blue)" }}>
                 <h1 >80 gsm</h1>
                 <Slider {...carouselProperties}>
-                    {multiData1.map((item) => (
-                        <Card item={item} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "80 gsm").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div><br /><br />
             <div id='bas2' style={{ color: "var(--light-blue)" }}>
                 <h1 >100 gsm</h1>
                 <Slider {...carouselProperties}>
-                    {multiData2.map((item) => (
-                        <Card item={item} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "100 gsm").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
-           
+
 
         </div>
 
     );
 };
 
-const Card = ({ item }) => {
-    return (
-        <div style={{ textAlign: 'center' }}>
-            <img
-                className='multi__image'
-                src={item}
-                alt=''
-                style={{
-                    width: '100%',
-                    height: '170px',
-                    objectFit: 'contain',
-                    marginBottom: '10px',
-                }}
-            />
-            <p style={{ fontSize: '14px', padding: '5px 0' }}>TOP TRNDING TVs</p>
-            <p style={{ fontSize: '16px', padding: '5px 0', color: 'green' }}>
-                From ₹ 7,000
-            </p>
-            <p style={{ fontSize: '14px', padding: '5px 0', color: 'gray' }}>
-                Up To ₹ 5,000 Off on HDFC
-            </p>
-        </div>
-    );
-};
+
 
 export default MultiItemCarousel4;

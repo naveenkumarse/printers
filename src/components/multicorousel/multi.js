@@ -1,3 +1,6 @@
+import { db } from '../../firebase';
+import { query, collection, onSnapshot } from 'firebase/firestore';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -49,6 +52,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import CategoryBar from '../categorybar';
 import { Link } from 'react-router-dom';
+import Card from './card';
 let slidesToShow = 5;
 const CategoryBarData = [
     {
@@ -75,8 +79,8 @@ const CategoryBarData = [
         type: "electronics",
         classnum: "bas3"
     },
-   
-   
+
+
 ];
 
 
@@ -104,7 +108,7 @@ export const multiData = [
         upto: "7000"
     },
     {
-        img:spcard4,
+        img: spcard4,
         url: "id1",
         myname: "Greeting Card",
         from: "5000",
@@ -124,7 +128,7 @@ export const multiData = [
         from: "5000",
         upto: "7000"
     },
-    
+
 ];
 export const multiData1 = [
     {
@@ -149,7 +153,7 @@ export const multiData1 = [
         upto: "7000"
     },
     {
-        img:cgloss4,
+        img: cgloss4,
         url: "id1",
         myname: "ProductTv",
         from: "5000",
@@ -169,11 +173,11 @@ export const multiData1 = [
         from: "5000",
         upto: "7000"
     },
-    
+
 ];
 
 export const multiData2 = [
-    
+
     {
         img: cmatte1,
         url: "id1",
@@ -216,11 +220,11 @@ export const multiData2 = [
         from: "5000",
         upto: "6000"
     },
-    
+
 ];
 
 export const multiData3 = [
-    
+
     {
         img: csynth1,
         url: "id1",
@@ -277,7 +281,7 @@ export const multiData3 = [
         from: "5000",
         upto: "6000"
     },
-    
+
 ];
 
 
@@ -341,11 +345,22 @@ const carouselProperties = {
 };
 
 const MultiItemCarousel = () => {
+    const [cards, setCards] = useState([]);
     const [width, setWidth] = useState(window.innerWidth);
     const updateWidth = () => {
         setWidth(window.innerWidth);
     };
-
+    useEffect(() => {
+        const q = query(collection(db, 'cards'))
+        const unSubscribe = onSnapshot(q, (querySnapshot) => {
+            let todoArr = []
+            querySnapshot.forEach((doc) => {
+                todoArr.push({ ...doc.data(), id: doc.id })
+            });
+            setCards(todoArr);
+        })
+        return () => unSubscribe();
+    }, [])
     useEffect(() => {
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
@@ -381,33 +396,41 @@ const MultiItemCarousel = () => {
             <div id='bas0' style={{ color: "var(--light-blue)" }}>
                 <h1 >Special Cards</h1>
                 <Slider {...carouselProperties}>
-                    {multiData.map((item, i) => (
-                        <Card key={i} img={item.img} url={item.url} name={item.myname} from={item.from} upto={item.upto} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Special Cards").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
             <div id='bas1' style={{ color: "var(--light-blue)" }}>
                 <h1 >Gloss-Finish Cards</h1>
                 <Slider {...carouselProperties}>
-                    {multiData1.map((item, i) => (
-                        <Card item={item} key={i} img={item.img} url={item.url} name={item.myname} from={item.from} upto={item.upto} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Gloss-Finish Cards").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
             <div id='bas2' style={{ color: "var(--light-blue)" }}>
                 <h1 >Matte-Finish Cards</h1>
                 <Slider {...carouselProperties}>
-                    {multiData2.map((item, i) => (
-                        <Card item={item} key={i} img={item.img} url={item.url} name={item.myname} from={item.from} upto={item.upto} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Matte-Finish Cards").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
             <div id='bas3' style={{ color: "var(--light-blue)" }}>
                 <h1 >Synthetic-Finish Cards</h1>
                 <Slider {...carouselProperties}>
-                    {multiData3.map((item, i) => (
-                        <Card item={item} key={i} img={item.img} url={item.url} name={item.myname} from={item.from} upto={item.upto} />
-                    ))}
+                    {
+                        cards.filter(product => product.category == "Synthetic-Finish Cards").map((item) => {
+                            return <Card key={item.id} item={item} />
+                        })
+                    }
                 </Slider>
             </div>
 
@@ -416,32 +439,5 @@ const MultiItemCarousel = () => {
     );
 };
 
-const Card = (props) => {
-    const { img, url, upto, name, from } = props;
-    return (
-        <Link to={url}>
-            <div style={{ textAlign: 'center' }}>
-                <img
-                    className='multi__image'
-                    src={img}
-                    alt=''
-                    style={{
-                        width: '100%',
-                        height: '170px',
-                        objectFit: 'contain',
-                        marginBottom: '10px',
-                    }}
-                />
-                <p style={{ fontSize: '14px', padding: '5px 0' }}>{name}</p>
-                <p style={{ fontSize: '16px', padding: '5px 0', color: 'green' }}>
-                    MRP ₹ {from}
-                </p>
-                {/* <p style={{ fontSize: '14px', padding: '5px 0', color: 'gray' }}>
-                    Up To ₹ {upto} Off on HDFC
-                </p> */}
-            </div>
-        </Link>
-    );
-};
 
 export default MultiItemCarousel;

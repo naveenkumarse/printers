@@ -39,6 +39,7 @@ import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import CategoryBar from '../categorybar';
+import Card from './card';
 let slidesToShow = 5;
 const CategoryBarData = [
     {
@@ -260,31 +261,6 @@ const MultiItemCarousel1 = () => {
 
         </div>
 
-    );
-};
-
-const Card = ({ item }) => {
-    return (
-        <div style={{ textAlign: 'center' }}>
-            <img
-                className='multi__image'
-                src={item.url}
-                alt=''
-                style={{
-                    width: '100%',
-                    height: '170px',
-                    objectFit: 'contain',
-                    marginBottom: '10px',
-                }}
-            />
-            <p style={{ fontSize: '14px', padding: '5px 0' }}>{item.name}</p>
-            <p style={{ fontSize: '16px', padding: '5px 0', color: 'green' }}>
-                From ₹ {item.price}
-            </p>
-            <p style={{ fontSize: '14px', padding: '5px 0', color: 'gray' }}>
-                {item.desc}
-            </p>
-        </div>
     );
 };
 
