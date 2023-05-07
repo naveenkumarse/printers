@@ -1,3 +1,6 @@
+import {db} from '../../firebase';
+import {query,collection, onSnapshot} from 'firebase/firestore';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -166,11 +169,22 @@ const carouselProperties = {
 };
 
 const MultiItemCarousel1 = () => {
+    const [cards,setCards] = useState([]);
     const [width, setWidth] = useState(window.innerWidth);
     const updateWidth = () => {
         setWidth(window.innerWidth);
     };
-
+    useEffect(()=>{
+        const q = query(collection(db,'paper'))
+        const unSubscribe = onSnapshot(q,(querySnapshot)=>{
+          let todoArr = []
+          querySnapshot.forEach((doc)=>{
+            todoArr.push({...doc.data(),id:doc.id})
+          });
+          setCards(todoArr);
+        })
+        return ()=> unSubscribe(); 
+    },[])
     useEffect(() => {
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
@@ -205,34 +219,42 @@ const MultiItemCarousel1 = () => {
             </div>
             <div id='bas0' style={{ color: "var(--light-blue)" }}>
                 <h1 >100 gsm</h1>
-                <Slider {...carouselProperties}>
-                    {multiData.map((item) => (
-                        <Card item={item} />
-                    ))}
+                <Slider  {...carouselProperties}>
+                    {
+          cards.filter(product => product.thickness == "100gsm").map((item) => {
+            return <Card key={item.id} item={item} />
+          })
+        }
                 </Slider>
             </div><br /><br />
             <div id='bas1' style={{ color: "var(--light-blue)" }}>
                 <h1 >130 gsm</h1>
                 <Slider {...carouselProperties}>
-                    {multiData1.map((item) => (
-                        <Card item={item} />
-                    ))}
+                {
+          cards.filter(product => product.thickness == "200gsm").map((item) => {
+            return <Card key={item.id} item={item} />
+          })
+        }
                 </Slider>
             </div><br /><br />
             <div id='bas2' style={{ color: "var(--light-blue)" }}>
                 <h1 >170 gsm</h1>
                 <Slider {...carouselProperties}>
-                    {multiData2.map((item) => (
-                        <Card item={item} />
-                    ))}
+                {
+          cards.filter(product => product.thickness == "170").map((item) => {
+            return <Card key={item.id} item={item} />
+          })
+        }
                 </Slider>
             </div><br /><br />
             <div id='bas3' style={{ color: "var(--light-blue)" }}>
                 <h1 >300 gsm</h1>
                 <Slider {...carouselProperties}>
-                    {multiData3.map((item) => (
-                        <Card item={item} />
-                    ))}
+                {
+          cards.filter(product => product.thickness == "300gsm").map((item) => {
+            return <Card key={item.id} item={item} />
+          })
+        }
                 </Slider>
             </div>
 
@@ -246,7 +268,7 @@ const Card = ({ item }) => {
         <div style={{ textAlign: 'center' }}>
             <img
                 className='multi__image'
-                src={item}
+                src={item.url}
                 alt=''
                 style={{
                     width: '100%',
@@ -255,12 +277,12 @@ const Card = ({ item }) => {
                     marginBottom: '10px',
                 }}
             />
-            <p style={{ fontSize: '14px', padding: '5px 0' }}>TOP TRNDING TVs</p>
+            <p style={{ fontSize: '14px', padding: '5px 0' }}>{item.name}</p>
             <p style={{ fontSize: '16px', padding: '5px 0', color: 'green' }}>
-                From ₹ 7,000
+                From ₹ {item.price}
             </p>
             <p style={{ fontSize: '14px', padding: '5px 0', color: 'gray' }}>
-                Up To ₹ 5,000 Off on HDFC
+                {item.desc}
             </p>
         </div>
     );

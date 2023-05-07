@@ -6,7 +6,7 @@ import { Button } from "@material-ui/core";
 import { addDoc, collection } from "firebase/firestore";
 const AddPaper = () => {
     const [image, setImage] = useState(null);
-    const [category, setcategory] = useState("");
+    const [thickness, setThickness] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [size, setSize] = useState("");
@@ -55,7 +55,7 @@ const AddPaper = () => {
     }
     await addDoc(collection(db,'paper'),{
       name: name,
-      category:category,
+      thickness:thickness,
       desc:description,
       about:about,
       price:price,
@@ -97,15 +97,15 @@ const AddPaper = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="text"
                             >
-                                category
+                                thickness
                             </label>
                             <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="password"
                                 type="text"
-                                placeholder="category"
-                                onChange={(e) => setcategory(e.target.value)}
-                                value={category}
+                                placeholder="thickness"
+                                onChange={(e) => setThickness(e.target.value)}
+                                value={thickness}
                             />
                             {/* <p className="text-red-500 text-xs italic">Please enter a password.</p> */}
                         </div>
@@ -196,7 +196,7 @@ const AddPaper = () => {
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="password"
                                 type="text"
-                                placeholder="Price"
+                                placeholder="About"
                                 onChange={(e) => setAbout(e.target.value)}
                                 value={about}
                             />
