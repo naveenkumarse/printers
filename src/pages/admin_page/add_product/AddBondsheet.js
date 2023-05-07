@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { storage } from "../../../firebase";
+import { db, storage } from "../../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Button } from "@material-ui/core";
+import { addDoc, collection } from "firebase/firestore";
 const AddBondsheet = () => {
     const [image, setImage] = useState(null);
     const [category, setcategory] = useState("");
@@ -46,6 +47,25 @@ const AddBondsheet = () => {
     }
     alert(url);   
   };
+
+  const createbondsheet = async(e)=>{
+    e.preventDefault();
+    if(name === ''){
+      alert('please enter a valid name');
+      return;
+    }
+    await addDoc(collection(db,'bond sheet'),{
+      name: name,
+      category:category,
+      desc:description,
+      about:about,
+      price:price,
+      size:size,
+      url:url
+    })
+    window.location.reload();
+  }
+
     return (
         <>
             <div className="flex justify-center mt-7">
@@ -189,7 +209,7 @@ const AddBondsheet = () => {
                         <div className="w-full justify-center px-3 mb-6 md:mb-0 ">
                             <button
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
-                                type="button"> Add
+                                type="button" onClick={createbondsheet}> Add
                             </button>
                         </div>
                     </form>
