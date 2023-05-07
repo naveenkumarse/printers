@@ -28,7 +28,13 @@ import MultiItemCarousel4 from "./components/multicorousel/multi4";
 import MultiItemCarousel5 from "./components/multicorousel/multi5";
 import Description from "./components/description/description";
 import Carous from "./components/carous";
-import AddProduct from "./pages/admin_page/add_product/AddProduct";
+import AddProduct from "./pages/admin_page/add_product/AddCard";
+import AddCard from "./pages/admin_page/add_product/AddCard";
+import AddBondsheet from "./pages/admin_page/add_product/AddBondsheet";
+import AddCovers from "./pages/admin_page/add_product/AddCovers";
+import AddFlex from "./pages/admin_page/add_product/AddFlex";
+import AddPaper from "./pages/admin_page/add_product/AddPaper";
+import AddStickers from "./pages/admin_page/add_product/AddStickers";
 
 
 function App() {
@@ -141,11 +147,7 @@ function App() {
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel5 />
           </div>} />
-          <Route path="/admin/add" element={
-          <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
-            <AddProduct />
-          </div>} />
+        
         
         {/* <Route path="/contact" element={<Contact/>} /> */}
         <Route path="/contact" element={<div data-theme={theme} className="app">
@@ -154,6 +156,39 @@ function App() {
           <SimpleForm />
         </div>
         } />
+
+<Route path="/admin/addcard" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AddCard />
+          </div>} />
+          <Route path="/admin/bondsheet" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AddBondsheet />
+          </div>} />
+          <Route path="/admin/addcover" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AddCovers />
+          </div>} />
+          <Route path="/admin/addflex" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AddFlex />
+          </div>} />
+          <Route path="/admin/addpaper" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AddPaper />
+          </div>} />
+          <Route path="/admin/addsticker" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AddStickers />
+          </div>} />
+
+
       </Routes>
     </HashRouter>
   );

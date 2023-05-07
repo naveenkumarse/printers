@@ -1,48 +1,51 @@
 import React from "react";
 import { useState } from "react";
-
-const AddProduct = () => {
+import { storage } from "../../../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { Button } from "@material-ui/core";
+const AddFlex = () => {
     const [image, setImage] = useState(null);
-    const [pid, setPid] = useState("");
+    const [category, setcategory] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    const [size, setSize] = useState("");
     const [price, setPrice] = useState(0);
-    const [stocks, setStocks] = useState(0);
-    
+    const [about, setAbout] = useState("");
+    const [url, setUrl] = useState(null);
 
-    // const handleImgChange = (e) => {
-  //   if (e.target.files[0]) {
-  //     setImage(e.target.files[0]);
-  //   }
-  // };
-  // console.log(image);
+    const handleImgChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+  console.log(image);
 
-  // const uploadImg = () => {
-  //   if (image === null) {
-  //     alert("NO IMG SELECTED");
-  //     return;
-  //   } else {
-  //     console.log(image.name);
+  const uploadImg = () => {
+    if (image === null) {
+      alert("NO IMG SELECTED");
+      return;
+    } else {
+      console.log(image.name);
 
-  //     const imgRef = ref(storage, `/productimgs/${image.name}`);
+      const imgRef = ref(storage, `/flex/${image.name}`);
 
-  //     uploadBytes(imgRef, image)
-  //       .then(() => {
-  //         getDownloadURL(imgRef)
-  //           .then((url) => {
-  //             setUrl(url);
-  //           })
-  //           .catch((error) => {
-  //             console.log(error.message, "error getting url");
-  //           });
-  //           setImage(null);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error.message);
-  //       });
-  //   }
-  //   // console.log(url);
-  // };
+      uploadBytes(imgRef, image)
+        .then(() => {
+          getDownloadURL(imgRef)
+            .then((url) => {
+              setUrl(url);
+            })
+            .catch((error) => {
+              console.log(error.message, "error getting url");
+            });
+            setImage(null);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    }
+    alert(url);   
+  };
     return (
         <>
             <div className="flex justify-center mt-7">
@@ -57,22 +60,15 @@ const AddProduct = () => {
                                 
                             </label>
                             <div className="flex justify-between items-center">
+                               
                                 <input
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="image"
-                                    type="text"
-                                    placeholder="image"
-                                    onChange={(e) => setImage(e.target.value)}
-                                    value={image}
-                                />
-                                {/* <input
                   className=" w-3/5 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   type="file"
                   placeholder="Image"
                   onChange={handleImgChange}
                 />
-                                <Button onClick={uploadImg}> Upload </Button>  */}
+                                <Button onClick={uploadImg}> Upload </Button> 
                             </div>
 
                         </div>
@@ -83,15 +79,15 @@ const AddProduct = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="text"
                             >
-                                pid
+                                category
                             </label>
                             <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="password"
                                 type="text"
-                                placeholder="pid"
-                                onChange={(e) => setPid(e.target.value)}
-                                value={pid}
+                                placeholder="category"
+                                onChange={(e) => setcategory(e.target.value)}
+                                value={category}
                             />
                             {/* <p className="text-red-500 text-xs italic">Please enter a password.</p> */}
                         </div>
@@ -132,6 +128,26 @@ const AddProduct = () => {
                             {/* <p className="text-red-500 text-xs italic">Please enter a password.</p> */}
                         </div>
                         <br />
+                       
+                      
+                        <div className="mb-6">
+                            <label
+                                className="block text-gray-700 text-sm font-bold mb-2"
+                                htmlFor="text"
+                            >
+                                size
+                            </label>
+                            <input
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="password"
+                                type="text"
+                                placeholder="size"
+                                onChange={(e) => setSize(e.target.value)}
+                                value={size}
+                            />
+                            {/* <p className="text-red-500 text-xs italic">Please enter a password.</p> */}
+                        </div>
+                        <br/>
                         <div className="mb-6">
                             <label
                                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -156,15 +172,15 @@ const AddProduct = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="password"
                             >
-                                Stocks
+                                about
                             </label>
                             <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="password"
-                                type="number"
+                                type="text"
                                 placeholder="Price"
-                                onChange={(e) => setStocks(e.target.value)}
-                                value={stocks}
+                                onChange={(e) => setAbout(e.target.value)}
+                                value={about}
                             />
 
                             {/* <p className="text-red-500 text-xs italic">Please enter a password.</p> */}
@@ -178,11 +194,9 @@ const AddProduct = () => {
                         </div>
                     </form>
                 </div>
-            </div>
-            
+            </div> 
         </>
-       
     )
 }
 
-export default AddProduct;
+export default AddFlex;
