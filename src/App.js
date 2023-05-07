@@ -28,6 +28,7 @@ import MultiItemCarousel4 from "./components/multicorousel/multi4";
 import MultiItemCarousel5 from "./components/multicorousel/multi5";
 import Description from "./components/description/description";
 import Carous from "./components/carous";
+import AddProduct from "./pages/admin_page/add_product/AddProduct";
 
 
 function App() {
@@ -139,6 +140,11 @@ function App() {
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel5 />
+          </div>} />
+          <Route path="/admin/add" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AddProduct />
           </div>} />
         
         {/* <Route path="/contact" element={<Contact/>} /> */}

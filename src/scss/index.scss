@@ -9,6 +9,9 @@
 @import "products";
 @import "promo";
 @import "footer"; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "base";
  @import "scrollTop";
  @import "navbar";
