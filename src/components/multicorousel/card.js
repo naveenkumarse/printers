@@ -20,7 +20,7 @@ const Card = ({ item }) => {
                 From ₹ {item.price}
             </p>
             <p style={{ fontSize: '14px', padding: '5px 0', color: 'gray' }}>
-                {item.desc}
+                {item.about}
             </p>
         </div>
     );
