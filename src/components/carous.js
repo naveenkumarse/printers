@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import img1 from "./carouselimg1.jpg";
-import img3 from "./carouselimg3.jpg";
+import img1 from "./carousimg1.jpg";
+import img3 from "./carousimg3.jpg";
 function Carous() {
 
   const [selectedImage, setSelectedImage] = useState(0)
