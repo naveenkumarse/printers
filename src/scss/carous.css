@@ -1,4 +1,16 @@
-.photo {
-    height: 500%;
-    width: 200px;
-  }
+/* .photo {
+    height: 200%;
+    width: 100%;
+  } */
+.center{
+  text-align: center;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 80%;
+  height: 600px;
+}
+/* .center img{
+  max-width: 100%;
+} */
