@@ -181,7 +181,7 @@ const MultiItemCarousel2 = () => {
                 <h1 >Mirror Coat Stickers</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.category == "Mirror Coat Stickers").map((item) => {
+          cards.filter(product => product.category == "MirrorCoatStickers").map((item) => {
             return <Card key={item.id} item={item} />
           })
         }
@@ -191,7 +191,7 @@ const MultiItemCarousel2 = () => {
                 <h1 >Chrome Art Stickers</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.category == "Chrome Art Stickers").map((item) => {
+          cards.filter(product => product.category == "ChromeArtStickers").map((item) => {
             return <Card key={item.id} item={item} />
           })
         }

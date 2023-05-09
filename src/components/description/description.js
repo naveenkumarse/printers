@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import spcard1 from '../../assets/spcard1.jpg'
+import { useParams } from 'react-router-dom';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { db } from '../../firebase';
 
-
+import { doc, getDoc } from "firebase/firestore";
 
 const items = [
     {
@@ -34,6 +37,17 @@ const items = [
 ];
 
 const Description = () => {
+    let { productId } = useParams();
+    let {categoryId} = useParams();
+    useEffect(async()=>{
+        const snap = await getDoc(doc(db,categoryId,productId ))
+        if (snap.exists()) {
+          console.log(snap.data())
+        }
+        else {
+          console.log("No such document")
+        }
+    },[])
     return (
         <div className="describe">
             {
