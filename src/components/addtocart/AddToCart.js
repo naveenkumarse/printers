@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from "react";
-import CartCard from "./CartCard";
-import { listMyCart } from "../../api";
+
+
 import { Checkout } from "../checkout/CheckOut";
+import CartCard from "./CartCard";
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { db } from "../../firebase";
+
 
 const MyCart = () => {
     const [mycart, setMyCart] = useState([])
     const [buy, setBuy] = useState(false);
     const subtotal = mycart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
-    const [set, Setset] = useState(false);
+    console.log(subtotal);
     console.log(mycart)
-    const uid = localStorage.getItem("uid")
+    const uid = localStorage.getItem("email");
     const body = { uid };
-    useEffect(() => {
+    useEffect(async() => {
+        const q = query(collection(db,'addtocart'))
+        const unSubscribe = onSnapshot(q,(querySnapshot)=>{
+          let todoArr = []
+          querySnapshot.forEach((doc)=>{
+            todoArr.push({...doc.data(),id:doc.id})
+          });
+          setMyCart(todoArr);
+        })
+        return ()=> unSubscribe(); 
     }, []);
 
     const total = subtotal;
@@ -37,14 +50,14 @@ const MyCart = () => {
                                 Your Cart
                             </p>
                             {mycart ? (
-                                mycart.map((product) => (
+                                mycart.filter(product => product.uid == uid && product.ordered == false).map((product) => (
                                     <CartCard key={product._id} product={product} />
                                 ))
                             ) : (
                                 <div> No Items In Cart </div>
                             )}
                         </div>
-                        <div className="xl:w-1/4 md:w-1/3 w-full bg-gray-100 h-full">
+                        <div className="xl:w-1/4 md:w-1/4 w-full bg-gray-100 h-full">
                             <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
                                 <div>
                                     <p className="text-4xl font-black leading-9 text-gray-800">

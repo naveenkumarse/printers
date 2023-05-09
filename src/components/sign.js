@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {signInWithEmailAndPassword,createUserWithEmailAndPassword} from 'firebase/auth'
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import * as Components from './Components';
 import { auth } from '../firebase'
 function Sign() {
@@ -9,22 +9,23 @@ function Sign() {
     const [password, setPassword] = useState('');
     const onSignIn = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth,email,password)
-        .then((userCredential)=>{
-            console.log(userCredential)
-            window.location = '/'
-        }).catch((error)=>{
-            console.log(error);
-            alert("User Not Found");
-        })
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log(userCredential)
+                localStorage.setItem("email", email);
+                window.location = '/'
+            }).catch((error) => {
+                console.log(error);
+                alert("User Not Found");
+            })
     }
 
-    const onSignUp = (e) =>{
-            e.preventDefault();
-            createUserWithEmailAndPassword(auth,email,password)
-            .then((userCredential)=>{
+    const onSignUp = (e) => {
+        e.preventDefault();
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
                 console.log(userCredential)
-            }).catch((error)=>{
+            }).catch((error) => {
                 console.log(error);
             })
     }

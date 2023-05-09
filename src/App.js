@@ -35,6 +35,7 @@ import AddCovers from "./pages/admin_page/add_product/AddCovers";
 import AddFlex from "./pages/admin_page/add_product/AddFlex";
 import AddPaper from "./pages/admin_page/add_product/AddPaper";
 import AddStickers from "./pages/admin_page/add_product/AddStickers";
+import MyCart from "./components/addtocart/AddToCart";
 
 
 function App() {
@@ -146,6 +147,11 @@ function App() {
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel5 />
+          </div>} />
+          <Route path="/mycart" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <MyCart />
           </div>} />
         
         

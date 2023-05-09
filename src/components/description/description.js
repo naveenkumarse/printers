@@ -30,6 +30,7 @@ const Description = () => {
     const [item,setItems] = useState({});
     let { productId } = useParams();
     let { categoryId } = useParams();
+    const uid = localStorage.getItem("email");
     // alert(typeof productId)
     useEffect(async () => {
         const docRef = doc(db,categoryId,productId);
@@ -53,11 +54,12 @@ const Description = () => {
       category:item.category,
       desc:item.desc,
       about:item.about,
-      price:item.price,
+      price:parseInt(item.price),
       size:item.size,
       url:item.url,
       quantity:parseInt(quantity),
-      uid:"se"
+      uid:uid,
+      ordered:false
     })
     window.location.reload();
   }

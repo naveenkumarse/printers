@@ -47,6 +47,9 @@ function Navbar({ changeTheme, currentTheme }) {
                 <Link to="/contact">Contact us</Link>
               </li>
               <li>
+                <Link to="/mycart">My cart</Link>
+              </li>
+              <li>
                 <Link to="/login">Login</Link>
               </li>
               {/* <li>
