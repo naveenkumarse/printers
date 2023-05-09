@@ -41,6 +41,7 @@ export const Checkout = (props) => {
             uid: uid,
             phone:phoneno
         })
+      
         window.location.reload()
     }
 
