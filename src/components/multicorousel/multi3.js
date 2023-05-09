@@ -172,7 +172,7 @@ const MultiItemCarousel3 = () => {
                 <h1 >Office Covers</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.category == "Office Covers").map((item) => {
+          cards.filter(product => product.category == "OfficeCovers").map((item) => {
             return <Card key={item.id} item={item} />
           })
         }

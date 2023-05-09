@@ -2,8 +2,9 @@ import React from "react";
 
 
 const Card = ({ item }) => {
+    
     return (
-        <a href="">
+        <a href={`#/products/${item.category}/${item.id}`}>
         <div style={{ textAlign: 'center' }}>
             <img
                 className='multi__image'
