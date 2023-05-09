@@ -3,6 +3,7 @@ import React from "react";
 
 const Card = ({ item }) => {
     return (
+        <a href="">
         <div style={{ textAlign: 'center' }}>
             <img
                 className='multi__image'
@@ -23,6 +24,7 @@ const Card = ({ item }) => {
                 {item.about}
             </p>
         </div>
+        </a>
     );
 };
 

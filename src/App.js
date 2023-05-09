@@ -187,7 +187,12 @@ function App() {
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <AddStickers />
           </div>} />
-
+          <Route path=":categoryId/:userId" element={
+          <div data-theme={theme} className="app">
+            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <Description />
+          </div>
+        } />
 
       </Routes>
     </HashRouter>
