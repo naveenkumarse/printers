@@ -223,7 +223,7 @@ const MultiItemCarousel1 = () => {
                 <Slider  {...carouselProperties}>
                     {
           cards.filter(product => product.thickness == "100gsm").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"paper"} />
           })
         }
                 </Slider>
@@ -233,7 +233,7 @@ const MultiItemCarousel1 = () => {
                 <Slider {...carouselProperties}>
                 {
           cards.filter(product => product.thickness == "130gsm").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"paper"} />
           })
         }
                 </Slider>
@@ -243,7 +243,7 @@ const MultiItemCarousel1 = () => {
                 <Slider {...carouselProperties}>
                 {
           cards.filter(product => product.thickness == "170gsm").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"paper"} />
           })
         }
                 </Slider>
@@ -253,7 +253,7 @@ const MultiItemCarousel1 = () => {
                 <Slider {...carouselProperties}>
                 {
           cards.filter(product => product.thickness == "300gsm").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"paper"}/>
           })
         }
                 </Slider>

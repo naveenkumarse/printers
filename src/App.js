@@ -116,7 +116,7 @@ function App() {
 
           </div>} />
           
-        <Route path="/products/:category/:pid" element={
+        <Route path="/products/:categoryId/:productId" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <Description/>

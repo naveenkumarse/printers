@@ -1,24 +1,13 @@
 import React, { useEffect } from 'react';
 import spcard1 from '../../assets/spcard1.jpg'
 import { useParams } from 'react-router-dom';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import { doc, getDoc } from "firebase/firestore";
+import { useState } from 'react';
 
-const items = [
-    {
-        "_id": "1",
-        "title": "Special Valentine Card",
-        src: spcard1,
-        "description": "Specially made for Couples!",
-        "content": "About this item: Package Contents- 1 Love Card",
-        "content2": "  Size of the card : H-5.5 Inch & L-4 Inch",
-        "content3": "Perfect Gift: Love card is an ideal gift for husband, wife, boyfriend, girlfriend, Fiancé, or someone special.",
-        "price": 23,
-        "colors": ["red", "black", "crimson", "teal"],
-        "count": 1
-    },
+
     //     {"_id": "1",
     //     "title": "Nike Shoes",
     //     "src": [
@@ -34,40 +23,45 @@ const items = [
     //     "count": 1
     // }
 
-];
+
 
 const Description = () => {
+    const [item,setItems] = useState({});
     let { productId } = useParams();
-    let {categoryId} = useParams();
-    useEffect(async()=>{
-        const snap = await getDoc(doc(db,categoryId,productId ))
-        if (snap.exists()) {
-          console.log(snap.data())
+    let { categoryId } = useParams();
+    // alert(typeof productId)
+    useEffect(async () => {
+        const docRef = doc(db,categoryId,productId);
+        const docSnap = await getDoc(docRef);
+        
+        try {
+            const docSnap = await getDoc(docRef);
+            console.log(docSnap.data());
+            setItems(docSnap.data());
+        } catch (error) {
+            console.log(error)
         }
-        else {
-          console.log("No such document")
-        }
-    },[])
+    }, [])
     return (
         <div className="describe">
-            {
-                items.map((item, i) => (
-                    <div className="details" key={i}>
+            
+             
+                    <div className="details" >
                         <div className="big-img">
-                            <img src={item.src} alt="" />
+                            <img src={item.url} alt="" />
                         </div>
 
                         <div className="box">
                             <div className="row">
-                                <h2>{item.title}</h2>
+                                <h2>{item.name}</h2>
                                 <span>Rs.{item.price}</span>
                             </div>
 
 
-                            <p>{item.description}</p>
-                            <p>{item.content}</p>
-                            <p>{item.content2}</p>
-                            <p>{item.content3}</p>
+                            <p>{item.name}</p>
+                            <p>{item.desc}</p>
+                            <p>{item.thickness}</p>
+                            <p>{item.size}</p>
 
 
                             <button className="cart">Add to cart</button>
@@ -75,8 +69,7 @@ const Description = () => {
                             <button className="cart" >Buy Now</button>
                         </div>
                     </div>
-                ))
-            }
+                
         </div>
 
     )

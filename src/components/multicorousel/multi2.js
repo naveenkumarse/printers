@@ -182,7 +182,7 @@ const MultiItemCarousel2 = () => {
                 <Slider {...carouselProperties}>
                 {
           cards.filter(product => product.category == "MirrorCoatStickers").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"stickers"} />
           })
         }
                 </Slider>
@@ -192,7 +192,7 @@ const MultiItemCarousel2 = () => {
                 <Slider {...carouselProperties}>
                 {
           cards.filter(product => product.category == "ChromeArtStickers").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"stickers"}  />
           })
         }
                 </Slider>

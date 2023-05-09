@@ -226,7 +226,7 @@ const MultiItemCarousel5 = () => {
                 <Slider {...carouselProperties}>
                     {
                         cards.filter(product => product.category == "NormalBannerFlex").map((item) => {
-                            return <Card key={item.id} item={item} />
+                            return <Card key={item.id} item={item} catu={"flex"} />
                         })
                     }
                 </Slider>
@@ -236,7 +236,7 @@ const MultiItemCarousel5 = () => {
                 <Slider {...carouselProperties}>
                     {
                         cards.filter(product => product.category == "StarFlex").map((item) => {
-                            return <Card key={item.id} item={item} />
+                            return <Card key={item.id} item={item} catu={"flex"} />
                         })
                     }
                 </Slider>
@@ -246,7 +246,7 @@ const MultiItemCarousel5 = () => {
                 <Slider {...carouselProperties}>
                     {
                         cards.filter(product => product.category == "BacklighFlex").map((item) => {
-                            return <Card key={item.id} item={item} />
+                            return <Card key={item.id} item={item} catu={"flex"}  />
                         })
                     }
                 </Slider>
@@ -256,7 +256,7 @@ const MultiItemCarousel5 = () => {
                 <Slider {...carouselProperties}>
                     {
                         cards.filter(product => product.category == "VinylFlex").map((item) => {
-                            return <Card key={item.id} item={item} />
+                            return <Card key={item.id} item={item} catu={"flex"}  />
                         })
                     }
                 </Slider>

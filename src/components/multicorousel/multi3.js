@@ -173,7 +173,7 @@ const MultiItemCarousel3 = () => {
                 <Slider {...carouselProperties}>
                 {
           cards.filter(product => product.category == "OfficeCovers").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"covers"} />
           })
         }
                 </Slider>
@@ -183,7 +183,7 @@ const MultiItemCarousel3 = () => {
                 <Slider {...carouselProperties}>
                 {
           cards.filter(product => product.category == "covers").map((item) => {
-            return <Card key={item.id} item={item} />
+            return <Card key={item.id} item={item} catu={"covers"}  />
           })
         }
                 </Slider>
