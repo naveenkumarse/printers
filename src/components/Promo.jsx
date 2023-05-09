@@ -1,5 +1,6 @@
 import React from "react";
-import promo from "../assets/promo.png";
+// import promo from "../assets/promo.png";
+import promo from "./carousimg4.jpg";
 function Promo() {
   return (
     <div className="promo-container">

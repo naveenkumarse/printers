@@ -10,7 +10,7 @@ function Navbar({ changeTheme, currentTheme }) {
   html.addEventListener("click", () => setNavState(false));
   return (
     <nav>
-      <div className="container py-3 mx-3">
+      <div className="container py-3 mx-0">
         <div className="brand">
           <span>Ero Prints!</span>
           <span className="dot">.</span>

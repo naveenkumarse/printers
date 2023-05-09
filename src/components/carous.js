@@ -4,6 +4,7 @@ import img2 from "./carousimg2.jpg";
 import img3 from "./carousimg3.jpg";
 
 
+
 function Carous() {
 
   const [selectedImage, setSelectedImage] = useState(0)

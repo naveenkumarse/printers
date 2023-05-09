@@ -64,7 +64,7 @@ const CategoryBarData = [
     {
         imageSrc: card2,
         category: "Gloss-Finish",
-        type: "mobiles",
+        type: null,
         classnum: "bas1"
     },
     {
@@ -407,7 +407,7 @@ const MultiItemCarousel = () => {
                 <h1 >Gloss-Finish Cards</h1>
                 <Slider {...carouselProperties}>
                     {
-                        cards.filter(product => product.category == "Gloss-Finish Cards").map((item) => {
+                        cards.filter(product => product.category == "Gloss-Finish").map((item) => {
                             return <Card key={item.id} item={item} />
                         })
                     }
@@ -417,7 +417,7 @@ const MultiItemCarousel = () => {
                 <h1 >Matte-Finish Cards</h1>
                 <Slider {...carouselProperties}>
                     {
-                        cards.filter(product => product.category == "Matte-Finish Cards").map((item) => {
+                        cards.filter(product => product.category == "Matte-Finish").map((item) => {
                             return <Card key={item.id} item={item} />
                         })
                     }
