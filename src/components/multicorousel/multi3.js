@@ -31,12 +31,12 @@ const CategoryBarData = [
         type: null,
         classnum: "bas0"
     },
-    {
-        imageSrc: "https://cdn-icons-png.flaticon.com/128/5279/5279770.png",
-        category: "Mobiles & Tablets",
-        type: "mobiles",
-        classnum: "bas1"
-    },
+    // {
+    //     imageSrc: "https://cdn-icons-png.flaticon.com/128/5279/5279770.png",
+    //     category: "Mobiles & Tablets",
+    //     type: "mobiles",
+    //     classnum: "bas1"
+    // },
    
 ];
 
@@ -178,7 +178,7 @@ const MultiItemCarousel3 = () => {
         }
                 </Slider>
             </div>
-            <div id='bas2' style={{ color: "var(--light-blue)" }}>
+            {/* <div id='bas2' style={{ color: "var(--light-blue)" }}>
                 <h1 >covers</h1>
                 <Slider {...carouselProperties}>
                 {
@@ -187,7 +187,7 @@ const MultiItemCarousel3 = () => {
           })
         }
                 </Slider>
-            </div>
+            </div> */}
            
         </div>
 

@@ -64,7 +64,7 @@ const CategoryBarData = [
     {
         imageSrc: card2,
         category: "Gloss-Finish",
-        type: "mobiles",
+        type: null,
         classnum: "bas1"
     },
     {
