@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import spcard1 from '../../assets/spcard1.jpg'
 import { useParams } from 'react-router-dom';
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 import { doc, getDoc } from "firebase/firestore";
@@ -26,6 +26,7 @@ import { useState } from 'react';
 
 
 const Description = () => {
+    
     const [item,setItems] = useState({});
     let { productId } = useParams();
     let { categoryId } = useParams();
@@ -42,6 +43,25 @@ const Description = () => {
             console.log(error)
         }
     }, [])
+    
+  const addToCart = async(e)=>{
+    e.preventDefault();
+    const quantity = prompt("Please enter the quantity",1);
+    console.log(item.name);
+    await addDoc(collection(db,'addtocart'),{
+      name: item.name,
+      category:item.category,
+      desc:item.desc,
+      about:item.about,
+      price:item.price,
+      size:item.size,
+      url:item.url,
+      quantity:parseInt(quantity),
+      uid:"se"
+    })
+    window.location.reload();
+  }
+
     return (
         <div className="describe">
             
@@ -64,7 +84,7 @@ const Description = () => {
                             <p>{item.size}</p>
 
 
-                            <button className="cart">Add to cart</button>
+                            <button className="cart" onClick={addToCart}>Add to cart</button>
                             <span style={{ padding: "30px" }}></span>
                             <button className="cart" >Buy Now</button>
                         </div>
