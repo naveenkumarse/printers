@@ -232,7 +232,7 @@ const MultiItemCarousel1 = () => {
                 <h1 >130 gsm</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.thickness == "200gsm").map((item) => {
+          cards.filter(product => product.thickness == "130gsm").map((item) => {
             return <Card key={item.id} item={item} />
           })
         }
@@ -242,7 +242,7 @@ const MultiItemCarousel1 = () => {
                 <h1 >170 gsm</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.thickness == "170").map((item) => {
+          cards.filter(product => product.thickness == "170gsm").map((item) => {
             return <Card key={item.id} item={item} />
           })
         }
