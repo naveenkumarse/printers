@@ -15,7 +15,7 @@ export const Checkout = (props) => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('Tamil Nadu');
     const [pincode, setPincode] = useState('');
-    const OrderedProducts = mycart.reduce((prev, cur) => prev + "," + cur.name, "");
+    const OrderedProducts = mycart.reduce((prev, cur) => prev + cur.name+",", "");
     // useEffect(()=>{
     // console.log(mycart);
 
