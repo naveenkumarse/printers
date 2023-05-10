@@ -74,7 +74,7 @@ function Categories() {
                 <div className="title-container">
                     <h2>Categories</h2>
                 </div>
-                <div style={{textDecoration:"none"}} className="categories">             
+                <div style={{textDecoration:"none"} } className="categories">             
               {links}       
                 </div>
                 {/* <button>Show All</button> */}

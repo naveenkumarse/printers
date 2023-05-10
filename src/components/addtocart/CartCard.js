@@ -51,7 +51,7 @@ const CartCard = (props) => {
                        
                     </div>
                     <div className="flex items-center justify-end pt-5 pr-3">
-                            <button className=" bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={()=>remove(id)}>
+                            <button className=" bg-emerald-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-full" onClick={()=>remove(id)}>
                                 Remove
                             </button>
                         </div>

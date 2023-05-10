@@ -45,7 +45,7 @@ function Chooseus() {
             {data.map(({ image, title, description }, index) => {
               return (
                 <div className="choose" key={index}>
-                  <img src={image} alt="choose" />
+                  <img src={image} style={{width:"50px",height:"20%"}} alt="choose" />
                   <h4>{title}</h4>
                   <p>{description}</p>
                 </div>

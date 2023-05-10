@@ -80,15 +80,15 @@ const Description = () => {
                             </div>
 
 
-                            <p>{item.name}</p>
-                            <p>{item.desc}</p>
+                            <p><b>Product Name:</b>{item.name}</p>
+                            <p><b>Type:</b>{item.desc}</p>
                             <p>{item.thickness}</p>
-                            <p>{item.size}</p>
+                            <p><b>Size:</b>{item.size}</p>
 
 
                             <button className="cart" onClick={addToCart}>Add to cart</button>
                             <span style={{ padding: "30px" }}></span>
-                            <button className="cart" >Buy Now</button>
+                            {/* <button className="cart" >Buy Now</button> */}
                         </div>
                     </div>
                 

@@ -19,7 +19,7 @@ function Promo() {
           </div>
         </div>
         <div className="promo-image">
-          <img src={promo} alt="Promo" />
+          <img src={promo} style={{width:"70%",height:"90%"}} alt="Promo" />
         </div>
       </div>
     </div>

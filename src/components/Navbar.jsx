@@ -4,6 +4,8 @@ import { MdClose } from "react-icons/md";
 import { ImSun } from "react-icons/im";
 import { BsFillMoonFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import whtsapp from './WhatsApp.svg.webp';
+import './whatsapp.css';
 function Navbar({ changeTheme, currentTheme }) {
   const [navState, setNavState] = useState(false);
   const html = document.querySelector("html");
@@ -61,6 +63,13 @@ function Navbar({ changeTheme, currentTheme }) {
                 ) : (
                   <BsFillMoonFill className="moon" />
                 )}
+              </li>
+              <li>
+                <div className="container">
+                  <a href="http://wa.me/+919865286474" target="_bank">
+                    <img src={whtsapp} alt="nothing"></img>
+                  </a>
+                </div>
               </li>
             </ul>
           </div>

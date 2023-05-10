@@ -134,7 +134,7 @@
   justify-content: center;
 }
 .choose-us-container .container .content .delivery img {
-  max-inline-size: 100%;
+  width: 90%;
   block-size: auto;
 }
 @media only screen and (min-device-width: 768px) {
