@@ -40,6 +40,7 @@ import AdminLogin from "./pages/admin_page/login/admin_login";
 import AdminNavbar from "./pages/admin_page/admin_navbar/admin_navbar";
 import ListCategories from "./pages/admin_page/add_product/List_categories";
 import OrderTable from "./pages/admin_page/order_details/order_table";
+import ViewProducts from "./pages/admin_page/view_products/view_products";
 
 
 function App() {
@@ -47,39 +48,7 @@ function App() {
   const changeTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
-  // useEffect(() => {
-  //   const registerAnimations = () => {
-  //     const sr = scrollreveal({
-  //       origin: "bottom",
-  //       distance: "80px",
-  //       duration: 1000,
-  //       reset: false,
-  //     });
-  //     sr.reveal(
-  //       `
-  //       nav,
-  //       .carous,
-  //       .services-container,
-  //       .categories-container,
-  //       .recommend-container,
-  //       .choose-us-container,
-  //       .products-container,
-  //       .promo-container,
-  //       footer
-  //   `,
-  //       {
-  //         interval: 500,
-  //       }
-  //     );
-  //   };
-  //   registerAnimations();
-  // }, []);
-  // window.setTimeout(() => {
-  //   const carous = document.getElementsByClassName("carous");
-  //   if (carous[0]) {
-  //     carous[0].style.transform = "none";
-  //   }
-  // }, 1500);
+
   return (
 
     <HashRouter>
@@ -219,7 +188,7 @@ function App() {
         <Route path="/viewproducts" element={
           <div data-theme={theme} className="app">
             <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
-            <ListCategories work={'Update and delete based on categories'} val={2} />
+            <ViewProducts />
           </div>
         } />
         <Route path="/orderdetails" element={
@@ -227,6 +196,8 @@ function App() {
             <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <OrderTable />
           </div>
+        } />
+
         } />
       </Routes>
     </HashRouter>
