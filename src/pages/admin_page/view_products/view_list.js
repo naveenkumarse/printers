@@ -21,6 +21,7 @@ const ViewList = ({ product, index, pcategory }) => {
     }
     const onDelete = async (id) => {
         await deleteDoc(doc(db, pcategory, id));
+        window.location.reload();
     }
     return (
         <tr class="flex w-full mb-4">
