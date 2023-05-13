@@ -30,32 +30,56 @@ const Contact = () => {
 
   return (
     <StyledContactForm>
-      <form ref={form} onSubmit={sendEmail}>
+      <div className="contact">
+      <form ref={form} onSubmit={sendEmail} className="form">
         <label>Name</label>
         <input type="text" name="user_name" />
         <label>Email</label>
         <input type="email" name="user_email" />
         <label>Message</label>
         <textarea name="message" />
+        
         <input type="submit" value="Send" />
 
       </form>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      </div>
 
     </StyledContactForm>
-  );
-};
+  )
+}
 
 export default Contact;
 
 // Styles
 const StyledContactForm = styled.div`
-  width: 400px;
+  
 
   form {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    width: 100%;
+    width: 30%;
     font-size: 16px;
     margin-left:500px;
 
@@ -97,9 +121,12 @@ const StyledContactForm = styled.div`
     input[type="submit"] {
       margin-top: 2rem;
       cursor: pointer;
-      background: rgb(249, 105, 14);
+      background: rgb(30,144,255);
       color: white;
       border: none;
+      width: 80px;
+      align-content:center;
+      justify-content:center;
     }
   }
-`;
+`
