@@ -30,8 +30,8 @@ const ViewList = ({ product, index, pcategory }) => {
             <td class="p-4 w-1/4"><input type="text" value={desc} onChange={(e) => setDesc(e.target.value)} /></td>
             <td class="p-4 w-1/4"><input type="text" value={price} onChange={(e) => setPrice(e.target.value)} /></td>
             <td class="p-4 w-1/4"><input type="text" value={size} onChange={(e) => setSize(e.target.value)} /></td>
-            <td class="p-4 w-1/4"><button onClick={() => onUpdate(product.id)}>Update</button></td>
-            <td class="p-4 w-1/4"><button onClick={() => onDelete(product.id)}>Delete</button></td>
+            <td class="p-4 w-1/4"><button style={{color:"Green"}} onClick={() => onUpdate(product.id)}>Update</button></td>
+            <td class="p-4 w-1/4"><button style={{color:"red"}}onClick={() => onDelete(product.id)}>Delete</button></td>
         </tr>
     )
 }
