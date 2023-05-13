@@ -36,6 +36,9 @@ import AddFlex from "./pages/admin_page/add_product/AddFlex";
 import AddPaper from "./pages/admin_page/add_product/AddPaper";
 import AddStickers from "./pages/admin_page/add_product/AddStickers";
 import MyCart from "./components/addtocart/AddToCart";
+import AdminLogin from "./pages/admin_page/login/admin_login";
+import AdminNavbar from "./pages/admin_page/admin_navbar/admin_navbar";
+import ListCategories from "./pages/admin_page/add_product/List_categories";
 
 
 function App() {
@@ -90,7 +93,7 @@ function App() {
             {/* <Services /> */}
             {/* <Categories /> */}
             <Recommend />
-           
+
             {/* <Products /> */}
             <Promo />
             <Footer />
@@ -99,7 +102,7 @@ function App() {
 
           <Navbar changeTheme={changeTheme} currentTheme={theme} />
           <Categories />
-          <Productpage />
+          {/* <Productpage /> */}
           <SimpleForm />
 
         </div>
@@ -116,45 +119,45 @@ function App() {
             <MultiItemCarousel />
 
           </div>} />
-          
+
         <Route path="/products/:categoryId/:productId" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
-            <Description/>
+            <Description />
 
           </div>} />
-          <Route path="/products/paper" element={
+        <Route path="/products/paper" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel1 />
           </div>} />
-          <Route path="/products/sticker" element={
+        <Route path="/products/sticker" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel2 />
           </div>} />
-          <Route path="/products/cover" element={
+        <Route path="/products/cover" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel3 />
           </div>} />
-          <Route path="/products/bondsheet" element={
+        <Route path="/products/bondsheet" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel4 />
           </div>} />
-          <Route path="/products/flex" element={
+        <Route path="/products/flex" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel5 />
           </div>} />
-          <Route path="/mycart" element={
+        <Route path="/mycart" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MyCart />
           </div>} />
-        
-        
+
+
         {/* <Route path="/contact" element={<Contact/>} /> */}
         <Route path="/contact" element={<div data-theme={theme} className="app">
           <Navbar changeTheme={changeTheme} currentTheme={theme} />
@@ -163,43 +166,61 @@ function App() {
         </div>
         } />
 
-<Route path="/admin/addcard" element={
+        <Route path="/addproducts/addcard" element={
           <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <AddCard />
           </div>} />
-          <Route path="/admin/bondsheet" element={
+        <Route path="/addproducts/bondsheet" element={
           <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <AddBondsheet />
           </div>} />
-          <Route path="/admin/addcover" element={
+        <Route path="/addproducts/addcover" element={
           <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <AddCovers />
           </div>} />
-          <Route path="/admin/addflex" element={
+        <Route path="/addproducts/addflex" element={
           <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <AddFlex />
           </div>} />
-          <Route path="/admin/addpaper" element={
+        <Route path="/addproducts/addpaper" element={
           <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <AddPaper />
           </div>} />
-          <Route path="/admin/addsticker" element={
+        <Route path="/addproducts/addsticker" element={
           <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <AddStickers />
           </div>} />
-          <Route path=":categoryId/:userId" element={
+        <Route path=":categoryId/:userId" element={
           <div data-theme={theme} className="app">
-            <Navbar changeTheme={changeTheme} currentTheme={theme} />
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
             <Description />
           </div>
         } />
-
+        {/* admin page  */}
+        <Route path="/adminlogin" element={
+          <div data-theme={theme} className="app">
+            {/* <AdminNavbar changeTheme={changeTheme} currentTheme={theme} /> */}
+            <AdminLogin />
+          </div>
+        } />
+         <Route path="/addproducts" element={
+          <div data-theme={theme} className="app">
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
+            <ListCategories work ={'Select the category to add products'} val={1}/>
+          </div>
+        } />
+        <Route path="/viewproducts" element={
+          <div data-theme={theme} className="app">
+            <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
+            <ListCategories work ={'Update and delete based on categories'} val={2}/>
+          </div>
+        } />
       </Routes>
     </HashRouter>
   );
