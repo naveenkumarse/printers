@@ -39,7 +39,7 @@ import MyCart from "./components/addtocart/AddToCart";
 import AdminLogin from "./pages/admin_page/login/admin_login";
 import AdminNavbar from "./pages/admin_page/admin_navbar/admin_navbar";
 import ListCategories from "./pages/admin_page/add_product/List_categories";
-import OrderTable from "./pages/order_details/order_table";
+import OrderTable from "./pages/admin_page/order_details/order_table";
 
 
 function App() {
@@ -210,22 +210,22 @@ function App() {
             <AdminLogin />
           </div>
         } />
-         <Route path="/addproducts" element={
+        <Route path="/addproducts" element={
           <div data-theme={theme} className="app">
             <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
-            <ListCategories work ={'Select the category to add products'} val={1}/>
+            <ListCategories work={'Select the category to add products'} val={1} />
           </div>
         } />
         <Route path="/viewproducts" element={
           <div data-theme={theme} className="app">
             <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
-            <ListCategories work ={'Update and delete based on categories'} val={2}/>
+            <ListCategories work={'Update and delete based on categories'} val={2} />
           </div>
         } />
-           <Route path="/orderdetails" element={
+        <Route path="/orderdetails" element={
           <div data-theme={theme} className="app">
             <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
-            <OrderTable/>
+            <OrderTable />
           </div>
         } />
       </Routes>

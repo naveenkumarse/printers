@@ -10,23 +10,25 @@ import { db } from "../../firebase";
 const MyCart = () => {
     const [mycart, setMyCart] = useState([])
     const [buy, setBuy] = useState(false);
-    const subtotal = mycart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
-    console.log(subtotal);
+
+
+
+    // console.log(subtotal);
     console.log(mycart)
     const uid = localStorage.getItem("email");
     const body = { uid };
-    useEffect(async() => {
-        const q = query(collection(db,'addtocart'))
-        const unSubscribe = onSnapshot(q,(querySnapshot)=>{
-          let todoArr = []
-          querySnapshot.forEach((doc)=>{
-            todoArr.push({...doc.data(),id:doc.id})
-          });
-          setMyCart(todoArr);
+    useEffect(async () => {
+        const q = query(collection(db, 'addtocart'))
+        const unSubscribe = onSnapshot(q, (querySnapshot) => {
+            let todoArr = []
+            querySnapshot.forEach((doc) => {
+                todoArr.push({ ...doc.data(), id: doc.id })
+            });
+            setMyCart(todoArr);
         })
-        return ()=> unSubscribe(); 
+        return () => unSubscribe();
     }, []);
-
+    const subtotal = mycart.filter(product => product.uid == uid && product.ordered == false).reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
     const total = subtotal;
 
 

@@ -48,9 +48,6 @@ function AdminNavbar({ changeTheme, currentTheme }) {
                                 <Link to="/orderdetails ">Order details</Link>
                             </li>
                             <li>
-                                <Link to="/mycart">List users</Link>
-                            </li>
-                            <li>
                                 <Link to="/adminlogin">Sign Out</Link>
                             </li>
                             {/* <li>
