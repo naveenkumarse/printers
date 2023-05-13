@@ -8,7 +8,7 @@ import { useState } from "react";
 import ViewList from "./view_list";
 
 const ViewProducts = () => {
-    const category = ["cards", "paper","stickers","covers","bondsheet","flex"]
+    const category = ["cards", "paper","stickers","covers","bond sheet","flex"]
     const [cards, setCards] = useState([]);
     const [paper, setPaper] = useState([]);
     const [stickers, setSticker] = useState([]);
