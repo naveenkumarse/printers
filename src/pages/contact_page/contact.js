@@ -31,6 +31,11 @@ const Contact = () => {
   return (
     <StyledContactForm>
       <div className="contact">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       <form ref={form} onSubmit={sendEmail} className="form">
         <label>Name</label>
         <input type="text" name="user_name" />
@@ -56,9 +61,7 @@ const Contact = () => {
       <br/>
       <br/>
       <br/>
-      <br/>
-      <br/>
-      <br/>
+      
       <br/>
       <br/>
       <br/>

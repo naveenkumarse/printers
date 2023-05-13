@@ -104,14 +104,19 @@ export const Checkout = (props) => {
   }
 
   return (
-    <div>
+    <div className='checkout'>
 
 
       <h1 class="sr-only">Checkout</h1>
 
-      <div class="bg-white py-12 md:py-24" >
+      <div class="" >
         <div class="mx-auto max-w-lg px-4 lg:px-12">
-          <form class="grid grid-cols-1 gap-4">
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <form class="grid grid-cols-6 gap-4">
             <div class="col-span-3">
               <label
                 for="FirstName"
@@ -120,7 +125,7 @@ export const Checkout = (props) => {
                 First Name
               </label>
 
-              <input class=" mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" id="name" name="fname" type="text" onChange={(e) => setFirstname(e.target.value)} value={firstname} placeholder=" First Name" required />
+              <input class=" mt-1 w-full rounded-md border-gray-200 shadow-lg lg:text-lg" id="name" name="fname" type="text" onChange={(e) => setFirstname(e.target.value)} value={firstname} placeholder=" First Name" required />
 
             </div>
 
@@ -132,7 +137,7 @@ export const Checkout = (props) => {
                 Last Name
               </label>
 
-              <input class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" id="lname" name="lname" type="text" onChange={(e) => setLastname(e.target.value)} value={lastname} placeholder=" Last Name" />
+              <input class=" mt-1 w-full rounded-md border-gray-200 shadow-lg lg:text-lg" id="lname" name="lname" type="text" onChange={(e) => setLastname(e.target.value)} value={lastname} placeholder=" Last Name" />
             </div>
 
             <div class="col-span-6">
@@ -140,7 +145,7 @@ export const Checkout = (props) => {
                 Email
               </label>
 
-              <input class=" mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" type="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter your mail id" required />
+              <input class="  mt-1 w-full rounded-md border-gray-200 shadow-lg lg:text-lg" type="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter your mail id" required />
 
             </div>
 
@@ -149,7 +154,7 @@ export const Checkout = (props) => {
                 Phone
               </label>
 
-              <input pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm" id="ph" name="ph" type="text" onChange={(e) => setPhoneno(e.target.value)} value={phoneno} placeholder="Enter your mobile number" required />
+              <input pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class=" mt-1 w-full rounded-md border-gray-200 shadow-lg lg:text-lg" id="ph" name="ph" type="text" onChange={(e) => setPhoneno(e.target.value)} value={phoneno} placeholder="Enter your mobile number" required />
 
             </div>
 
@@ -170,14 +175,14 @@ export const Checkout = (props) => {
                   <label class="block uppercase tracking-wide text-gray-700 text-l font-bold mb-2" for="grid-city">
                     City
                   </label>
-                  <input class="relative w-full rounded-t-md border-gray-200 focus:z-10 sm:text-sm" id="city" name="city" type="text" onChange={(e) => setCity(e.target.value)} value={city} placeholder="City" required />
+                  <input class=" relative w-full rounded-t-md border-gray-200 focus:z-10 lg:text-lg" id="city" name="city" type="text" onChange={(e) => setCity(e.target.value)} value={city} placeholder="City" required />
                 </div>
                 <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-l font-bold mb-2" for="grid-state">
                     State
                   </label>
                   <div class="relative">
-                    <select class="relative w-full rounded-t-md border-gray-200 focus:z-10 sm:text-sm" id="state" name="state" defaultValue={state} required >
+                    <select class="relative w-full rounded-t-md border-gray-200 focus:z-10 lg:text-lg" id="state" name="state" defaultValue={state} required >
                       <option value="Tamil Nadu">Tamil Nadu</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -224,7 +229,7 @@ export const Checkout = (props) => {
                   <label class="block uppercase tracking-wide text-gray-700 text-l font-bold mb-2" for="grid-zip">
                     Pincode
                   </label>
-                  <input class="relative w-full rounded-b-md border-gray-200 focus:z-10 sm:text-sm" id="pincode" name="pincode" type="text" onChange={(e) => setPincode(e.target.value)} value={pincode} placeholder="Pincode" required />
+                  <input class="relative w-full rounded-b-md border-gray-200 focus:z-10 lg:text-lg" id="pincode" name="pincode" type="text" onChange={(e) => setPincode(e.target.value)} value={pincode} placeholder="Pincode" required />
                 </div>
               </div>
             </fieldset>
@@ -237,6 +242,13 @@ export const Checkout = (props) => {
           </form>
         </div>
       </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   )
 }
