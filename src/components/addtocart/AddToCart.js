@@ -5,6 +5,7 @@ import { Checkout } from "../checkout/CheckOut";
 import CartCard from "./CartCard";
 import { collection, deleteDoc, doc, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../firebase";
+import Sign from "../sign";
 
 
 const MyCart = () => {
@@ -35,7 +36,7 @@ const MyCart = () => {
 
     return (
         <>
-            {!buy ? <div
+            {uid !=null?!buy ? <div
                 className="w-full h-full bg-black bg-opacity-50 top-0 overflow-y-auto overflow-x-hidden "
                 id="chec-div"
             >
@@ -95,7 +96,7 @@ const MyCart = () => {
                         </div>
                     </div>
                 </div>
-            </div> : <Checkout uid={uid} total={total} mycart={mycart} />}
+            </div> : <Checkout uid={uid} total={total} mycart={mycart} />:<Sign/>}
         </>
     )
 }
