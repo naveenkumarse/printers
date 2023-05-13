@@ -59,7 +59,7 @@ const MyCart = () => {
                                 <div> No Items In Cart </div>
                             )}
                         </div>
-                        <div className="xl:w-1/3 md:w-1/3 w-full bg-emerald-100	background-color: rgb(209 250 229) h-full">
+                        <div className="xl:w-1/3 md:w-1/3 w-full bg-teal-100	background-color: rgb(204 251 241) h-full">
                             <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
                                 <div>
                                     <p className="text-4xl font-black leading-9 text-gray-800">

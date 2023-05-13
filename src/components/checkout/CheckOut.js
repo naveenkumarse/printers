@@ -235,7 +235,7 @@ export const Checkout = (props) => {
             </fieldset>
 
             <div class="col-span-6">
-              <button class="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg" type="button" onClick={() => { displayRazorpay(total); pay(); }} >
+              <button class="block w-full rounded-md bg-cyan-950	background-color: rgb(8 51 68) p-2.5 text-sm text-white transition hover:shadow-lg" type="button" onClick={() => { displayRazorpay(total); pay(); }} >
                 Place Order
               </button>
             </div>
