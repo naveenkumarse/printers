@@ -8,7 +8,7 @@ import { useState } from "react";
 import ViewList from "./view_list";
 
 const ViewProducts = () => {
-    const category = ["cards","paper"]
+    const category = ["cards", "paper"]
     const [cards, setCards] = useState([]);
     const [papers, setPaper] = useState([]);
     useEffect(() => {
@@ -40,18 +40,18 @@ const ViewProducts = () => {
                 <table class="text-left w-full">
                     <thead class="bg-black flex text-white w-full">
                         <tr class="flex w-full mb-4">
-                            <th class="p-4 w-1/4">S.No</th>
-                            <th class="p-4 w-1/4">Name</th>
-                            <th class="p-4 w-1/4">Category</th>
-                            <th class="p-4 w-1/4">Desc</th>
-                            <th class="p-4 w-1/4">Prize</th>
-                            <th class="p-4 w-1/4">Size</th>
-                            
+                            <th class="p-4 w-1/8">S.No</th>
+                            <th class="p-4 w-1/6">Name</th>
+                            <th class="p-4 w-1/5">Category</th>
+                            <th class="p-4 w-1/6">Desc</th>
+                            <th class="p-4 w-1/5">Prize</th>
+                            <th class="p-4 w-1/5">Size</th>
+
                         </tr>
                     </thead>
                     <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style={{ height: "50vh" }}>
                         {cards.map((card, i) => {
-                            return <ViewList key={i} index={i} product={card} pcategory ={category[0]}/>
+                            return <ViewList key={i} index={i} product={card} pcategory={category[0]} />
                         })}
                     </tbody>
                 </table>
@@ -61,17 +61,17 @@ const ViewProducts = () => {
                 <table class="text-left w-full">
                     <thead class="bg-black flex text-white w-full">
                         <tr class="flex w-full mb-4">
-                            <th class="p-4 w-1/4">S.No</th>
-                            <th class="p-4 w-1/4">Name</th>
-                            <th class="p-4 w-1/4">Category</th>
-                            <th class="p-4 w-1/4">Desc</th>
-                            <th class="p-4 w-1/4">Prize</th>
-                            <th class="p-4 w-1/4">Size</th>
+                            <th class="p-4 w-1/8">S.No</th>
+                            <th class="p-4 w-1/6">Name</th>
+                            <th class="p-4 w-1/5">Category</th>
+                            <th class="p-4 w-1/6">Desc</th>
+                            <th class="p-4 w-1/5">Prize</th>
+                            <th class="p-4 w-1/5">Size</th>
                         </tr>
                     </thead>
                     <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style={{ height: "50vh" }}>
                         {papers.map((card, i) => {
-                            return <ViewList key={i} index={i} product={card} pcategory ={category[1]}/>
+                            return <ViewList key={i} index={i} product={card} pcategory={category[1]} />
                         })}
                     </tbody>
                 </table>

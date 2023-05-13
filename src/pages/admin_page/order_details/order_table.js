@@ -25,6 +25,7 @@ const OrderTable = () => {
                         <th class="p-4 w-1/4">Name</th>
                         <th class="p-4 w-1/4">Products</th>
                         <th class="p-4 w-1/4">Date</th>
+                        <th class="p-4 w-1/4">Address</th>
                         <th class="p-4 w-1/4">Amount</th>
                         <th class="p-4 w-1/4">phone</th>
                     </tr>
