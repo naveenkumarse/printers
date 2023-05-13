@@ -39,13 +39,13 @@ function AdminNavbar({ changeTheme, currentTheme }) {
                     <div className={`links ${navState ? "responsive-toggle" : ""}`}>
                         <ul>
                             <li>
-                                <Link to="/">Add products</Link>
+                                <Link to="/addproducts">Add products</Link>
                             </li>
                             <li>
                                 <Link to="/viewproducts">View Products</Link>
                             </li>
                             <li>
-                                <Link to="/contact">Order details</Link>
+                                <Link to="/orderdetails ">Order details</Link>
                             </li>
                             <li>
                                 <Link to="/mycart">List users</Link>

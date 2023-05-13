@@ -6,7 +6,7 @@ import { Button } from "@material-ui/core";
 import { addDoc, collection } from "firebase/firestore";
 const AddPaper = () => {
     const [image, setImage] = useState(null);
-    const [thickness, setThickness] = useState("");
+    const [category, setCategory] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [size, setSize] = useState("");
@@ -55,7 +55,7 @@ const AddPaper = () => {
     }
     await addDoc(collection(db,'paper'),{
       name: name,
-      thickness:thickness,
+      category:category,
       desc:description,
       about:about,
       price:price,
@@ -74,7 +74,7 @@ const AddPaper = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="username"
                             >
-                                image
+                                Image
                                 
                             </label>
                             <div className="flex justify-between items-center">
@@ -97,15 +97,15 @@ const AddPaper = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="text"
                             >
-                                thickness
+                                Thickness
                             </label>
                             <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="password"
                                 type="text"
                                 placeholder="thickness"
-                                onChange={(e) => setThickness(e.target.value)}
-                                value={thickness}
+                                onChange={(e) => setCategory(e.target.value)}
+                                value={category}
                             />
                             {/* <p className="text-red-500 text-xs italic">Please enter a password.</p> */}
                         </div>
@@ -153,7 +153,7 @@ const AddPaper = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="text"
                             >
-                                size
+                                Size
                             </label>
                             <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -190,7 +190,7 @@ const AddPaper = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="password"
                             >
-                                about
+                                About
                             </label>
                             <input
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

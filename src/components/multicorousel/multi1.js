@@ -96,7 +96,6 @@ export const multiData2 = [
     multi5car16,
     multi5car17,
     multi5car18,
-    
 ];
 export const multiData3 = [
     multi5car19,
@@ -104,9 +103,6 @@ export const multiData3 = [
     multi5car21,
     multi5car22,
     multi5car23,
-    
-    
-    
 ];
 
 const PreviousBtn = (props) => {
