@@ -130,6 +130,15 @@ function ListCategories({work,val}) {
                 <div style={{textDecoration:"none"} } className="categories">             
               {val==1?links:view}       
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 {/* <button>Show All</button> */}
             </div>
         </div>
