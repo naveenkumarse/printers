@@ -3,19 +3,19 @@ import React, { useEffect, useState } from "react";
 
 import { Checkout } from "../checkout/CheckOut";
 import CartCard from "./CartCard";
-import { collection, onSnapshot, query } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../firebase";
 
 
 const MyCart = () => {
     const [mycart, setMyCart] = useState([])
     const [buy, setBuy] = useState(false);
-
+    const uid = localStorage.getItem("email");
 
 
     // console.log(subtotal);
     console.log(mycart)
-    const uid = localStorage.getItem("email");
+   
     const body = { uid };
     useEffect(async () => {
         const q = query(collection(db, 'addtocart'))

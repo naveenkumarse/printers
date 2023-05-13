@@ -1,4 +1,4 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase';
 
@@ -6,6 +6,15 @@ import { db } from '../../firebase';
 export const Checkout = (props) => {
   const { uid, total } = props
   const { mycart } = props
+  const remove = async () => {
+    alert("deleted")
+    const userid = localStorage.getItem("email");
+    const dm = mycart.filter((id)=>id.uid = userid);
+    dm.forEach(async(d)=>{
+      await deleteDoc(doc(db, 'addtocart', d.id));
+    })
+
+  }
 
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -81,6 +90,8 @@ export const Checkout = (props) => {
   };
 
   const pay = async (e) => {
+
+    remove();
     let tdate = new Date()
     let day = tdate.getDate();
     let month = tdate.getMonth() + 1;
@@ -230,7 +241,7 @@ export const Checkout = (props) => {
             </fieldset>
 
             <div class="col-span-6">
-              <button class="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg" type="button" onClick={() => { displayRazorpay(total); pay(); }} >
+              <button class="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg" type="button" onClick={() => { remove(); displayRazorpay(total); pay(); }} >
                 Place Order
               </button>
             </div>
