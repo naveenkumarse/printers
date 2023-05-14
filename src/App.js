@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Choose from "./components/Choose";
-
 import "./scss/index.scss";
-
 import Categories from "./components/Categories";
 import Recommend from "./components/Recommend";
-
 import Promo from "./components/Promo";
 import ScrollTop from "./components/ScrollTop";
 import Footer from "./components/Footer";
-
 import {
   Routes,
   Route,
@@ -41,16 +37,12 @@ import AdminNavbar from "./pages/admin_page/admin_navbar/admin_navbar";
 import ListCategories from "./pages/admin_page/add_product/List_categories";
 import OrderTable from "./pages/admin_page/order_details/order_table";
 import ViewProducts from "./pages/admin_page/view_products/view_products";
-
-
 function App() {
   const [theme, setTheme] = useState("light");
   const changeTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
-
   return (
-
     <HashRouter>
       <Routes>
         <Route path="/" element={
@@ -63,20 +55,16 @@ function App() {
             {/* <Services /> */}
             {/* <Categories /> */}
             <Recommend />
-
             {/* <Products /> */}
             <Promo />
             <Footer />
           </div>} />
         <Route path="/products" element={<div data-theme={theme} className="app">
-
           <Navbar changeTheme={changeTheme} currentTheme={theme} />
           <Categories />
           {/* <Productpage /> */}
           <SimpleForm />
-
         </div>
-
         } />
         <Route path="/login" element={<div data-theme={theme} className="app">
           <Navbar changeTheme={changeTheme} currentTheme={theme} />
@@ -87,14 +75,11 @@ function App() {
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MultiItemCarousel />
-
           </div>} />
-
         <Route path="/products/:categoryId/:productId" element={
           <div data-theme={theme} className="app">
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <Description />
-
           </div>} />
         <Route path="/products/paper" element={
           <div data-theme={theme} className="app">
@@ -126,8 +111,6 @@ function App() {
             <Navbar changeTheme={changeTheme} currentTheme={theme} />
             <MyCart />
           </div>} />
-
-
         {/* <Route path="/contact" element={<Contact/>} /> */}
         <Route path="/contact" element={<div data-theme={theme} className="app">
           <Navbar changeTheme={changeTheme} currentTheme={theme} />
@@ -135,7 +118,6 @@ function App() {
           <SimpleForm />
         </div>
         } />
-
         <Route path="/addproducts/addcard" element={
           <div data-theme={theme} className="app">
             <AdminNavbar changeTheme={changeTheme} currentTheme={theme} />
@@ -197,11 +179,8 @@ function App() {
             <OrderTable />
           </div>
         } />
-
-        } />
       </Routes>
     </HashRouter>
   );
 }
-
 export default App;

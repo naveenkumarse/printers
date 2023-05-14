@@ -1,5 +1,4 @@
 import React from "react";
-
 const TableList = ({order,index}) => {
     return (
         <tr class="flex w-full mb-4">

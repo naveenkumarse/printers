@@ -2,8 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { db } from "../../../firebase";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
-
-
 const ViewList = ({ product, index, pcategory }) => {
     const [name, setName] = useState(product.name);
     const [category, setCategory] = useState(product.category);
@@ -21,8 +19,7 @@ const ViewList = ({ product, index, pcategory }) => {
     }
     const onDelete = async (id) => {
         await deleteDoc(doc(db, pcategory, id));
-        // window.location.reload();
-    }
+            }
     return (
         <tr class="flex w-full mb-4">
             <td class="p-4 w-1/4"> {index}</td>
@@ -36,5 +33,4 @@ const ViewList = ({ product, index, pcategory }) => {
         </tr>
     )
 }
-
 export default ViewList;

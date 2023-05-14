@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import TableList from "./table_list";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../../firebase";
-
 const OrderTable = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {

@@ -18,6 +18,7 @@ function Sign() {
                 console.log(error);
                 alert("User Not Found");
             })
+            
     }
 
     const onSignUp = (e) => {

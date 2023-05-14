@@ -4,7 +4,6 @@ import { MdClose } from "react-icons/md";
 import { ImSun } from "react-icons/im";
 import { BsFillMoonFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-
 function AdminNavbar({ changeTheme, currentTheme }) {
     const [navState, setNavState] = useState(false);
     const html = document.querySelector("html");
@@ -60,7 +59,6 @@ function AdminNavbar({ changeTheme, currentTheme }) {
                                     <BsFillMoonFill className="moon" />
                                 )}
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -68,5 +66,4 @@ function AdminNavbar({ changeTheme, currentTheme }) {
         </nav>
     );
 }
-
 export default AdminNavbar;

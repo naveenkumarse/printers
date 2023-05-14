@@ -1,12 +1,9 @@
 import React from "react";
-
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useEffect } from "react";
-
 import { useState } from "react";
 import ViewList from "./view_list";
-
 const ViewProducts = () => {
     const category = ["cards", "paper","stickers","covers","bond sheet","flex"]
     const [cards, setCards] = useState([]);
@@ -94,7 +91,6 @@ const ViewProducts = () => {
                             <th class="p-4 w-1/6">Desc</th>
                             <th class="p-4 w-1/5">Prize</th>
                             <th class="p-4 w-1/5">Size</th>
-
                         </tr>
                     </thead>
                     <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style={{ height: "50vh" }}>
@@ -106,7 +102,7 @@ const ViewProducts = () => {
             </div>
             <h1>papers</h1>
             <div class="container ml-24 w-full mt-20">
-                <table class="text-left w-full">
+                <table class="text-left  w-full">
                     <thead class="bg-black flex text-white w-full">
                         <tr class="flex w-full mb-4">
                             <th class="p-4 w-1/8">S.No</th>
@@ -207,5 +203,4 @@ const ViewProducts = () => {
         </>
     )
 }
-
 export default ViewProducts;
