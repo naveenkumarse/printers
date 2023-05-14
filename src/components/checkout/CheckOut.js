@@ -7,10 +7,10 @@ export const Checkout = (props) => {
   const { uid, total } = props
   const { mycart } = props
   const remove = async () => {
-    alert("deleted")
+
     const userid = localStorage.getItem("email");
-    const dm = mycart.filter((id)=>id.uid = userid);
-    dm.forEach(async(d)=>{
+    const dm = mycart.filter((id) => id.uid = userid);
+    dm.forEach(async (d) => {
       await deleteDoc(doc(db, 'addtocart', d.id));
     })
 
@@ -91,7 +91,7 @@ export const Checkout = (props) => {
 
   const pay = async (e) => {
 
-    remove();
+
     let tdate = new Date()
     let day = tdate.getDate();
     let month = tdate.getMonth() + 1;
@@ -110,8 +110,8 @@ export const Checkout = (props) => {
       uid: uid,
       phone: phoneno
     })
-
-    window.location.reload()
+     remove();
+    
   }
 
   return (
@@ -122,11 +122,11 @@ export const Checkout = (props) => {
 
       <div class="" >
         <div class="mx-auto max-w-lg px-4 lg:px-12">
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <form class="grid grid-cols-6 gap-4">
             <div class="col-span-3">
               <label
@@ -246,20 +246,20 @@ export const Checkout = (props) => {
             </fieldset>
 
             <div class="col-span-6">
-              <button class="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg" type="button" onClick={() => { remove(); displayRazorpay(total); pay(); }} >
+              <button class="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg" type="button" onClick={(e) => { pay(e); displayRazorpay(total); }} >
                 Place Order
               </button>
             </div>
           </form>
         </div>
       </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   )
 }
