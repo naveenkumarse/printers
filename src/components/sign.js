@@ -18,7 +18,7 @@ function Sign() {
                 console.log(error);
                 alert("User Not Found");
             })
-            
+
     }
 
     const onSignUp = (e) => {
@@ -34,22 +34,22 @@ function Sign() {
         <div className="sign">
             <Components.Container>
                 <Components.SignUpContainer signinIn={signIn}>
-                    <Components.Form>
+                    <Components.Form onSubmit={onSignUp}>
                         <Components.Title>Create Account</Components.Title>
-                        <Components.Input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
-                        <Components.Input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <Components.Input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <Components.Button onClick={onSignUp}>Sign Up</Components.Button>
+                        <Components.Input type='text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} required />
+                        <Components.Input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <Components.Input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        <Components.Button type="submit">Sign Up</Components.Button>
                     </Components.Form>
                 </Components.SignUpContainer>
 
                 <Components.SignInContainer signinIn={signIn}>
-                    <Components.Form >
+                    <Components.Form onSubmit={onSignIn}>
                         <Components.Title>Sign in</Components.Title>
-                        <Components.Input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <Components.Input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <Components.Input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <Components.Input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} required />
                         <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
-                        <Components.Button onClick={onSignIn}>Sigin In</Components.Button>
+                        <Components.Button type="submit">Sigin In</Components.Button>
                     </Components.Form>
                 </Components.SignInContainer>
 
