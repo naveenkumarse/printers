@@ -218,7 +218,7 @@ const MultiItemCarousel1 = () => {
                 <h1 >100 gsm</h1>
                 <Slider  {...carouselProperties}>
                     {
-          cards.filter(product => product.thickness == "100gsm").map((item) => {
+          cards.filter(product => product.category == "100gsm").map((item) => {
             return <Card key={item.id} item={item} catu={"paper"} />
           })
         }
@@ -228,7 +228,7 @@ const MultiItemCarousel1 = () => {
                 <h1 >130 gsm</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.thickness == "130gsm").map((item) => {
+          cards.filter(product => product.category == "130gsm").map((item) => {
             return <Card key={item.id} item={item} catu={"paper"} />
           })
         }
@@ -238,7 +238,7 @@ const MultiItemCarousel1 = () => {
                 <h1 >170 gsm</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.thickness == "170gsm").map((item) => {
+          cards.filter(product => product.category == "170gsm").map((item) => {
             return <Card key={item.id} item={item} catu={"paper"} />
           })
         }
@@ -248,7 +248,7 @@ const MultiItemCarousel1 = () => {
                 <h1 >300 gsm</h1>
                 <Slider {...carouselProperties}>
                 {
-          cards.filter(product => product.thickness == "300gsm").map((item) => {
+          cards.filter(product => product.category == "300gsm").map((item) => {
             return <Card key={item.id} item={item} catu={"paper"}/>
           })
         }
